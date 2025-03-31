@@ -210,9 +210,7 @@ These libraries can be installed by writing the following code in the terminal: 
 4. New features are engineered for **X_train** and **X_test** which are provided below:
     - Rooms per tax
 
-        $$
-        \text{ROOMS\_PER\_TAX} = \frac{RM}{TAX + 10^{-6}}
-        $$
+        $$\text{ROOMS\_PER\_TAX} = \frac{RM}{TAX + 10^{-6}}$$
 
     - LSTAT and RM interaction
 

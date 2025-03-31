@@ -4,7 +4,7 @@ The core objective of this project is to introduce students to supervised learni
 
 ---
 
-##### Step 1: Setting up the environment
+#### Step 1: Setting up the environment
 - **The project structure** has been set up as provided on the README.md of this project provided below:
 
 ```    .
@@ -43,7 +43,7 @@ The core objective of this project is to introduce students to supervised learni
 
 ---
 
-##### Step 2: Libraries/Modules/Dependencies
+#### Step 2: Libraries/Modules/Dependencies
 - **kagglehub**         : *For downloading the dataset*
 - **numpy**             : *For numeric analysis*
 - **pandas**            : *For data manipulation*
@@ -55,7 +55,7 @@ These libraries can be installed by writing the following code in the terminal: 
 
 ---
 
-##### Step 3: Getting the dataset
+#### Step 3: Getting the dataset
 - **Dataset:** The dataset **boston_housing.csv** has been download from kagglehub(altavish/boston-housing-dataset) using its library as per the code provided on download_dataset.ipynb file on data folder and copyed to the data folder of this project.
 
 **Features:**
@@ -76,7 +76,7 @@ These libraries can be installed by writing the following code in the terminal: 
 - **MEDV**: median value of owner-occupied homes in $1000s (Target).
 ---
 
-##### Step 4: EDA (Exploratary Data Analysis)
+#### Step 4: EDA (Exploratary Data Analysis)
 1. Loaded the dataset from "..data/boston_housing.csv"
 2. Explored Data structure and Summary statistic:
     - **Sample Data:** 506 entries
@@ -94,25 +94,31 @@ These libraries can be installed by writing the following code in the terminal: 
 6. All the datasets/ sample are numerical datatype while some can be categorized on categorical data such as CHAS, RAD.
 ---
 
-##### Step 5: Data Preprocessing
+#### Step 5: Data Preprocessing
 1. Missing values were handled using **SimpleImputer** from sklearn.impute with **median** strategy.
 2. Outliers are handled using Interquartile Range(IQR rule) which is widely used statical technique for handling outliers.
     - **Quartiles:**
         - $$Q1$$ (25th percentile): Median of first half of data
         - $$Q2$$(75th percentile): Median of 2nd half of data
         - **IQR** (InterQuartile Range) represents middle of 50% of data:
+
             $
             IQR = Q2 - Q1
             $
+
     - **Quartile Thresholds:**
         - Lower Bound: Values below this are considered outliers.
+
             $
             LB = Q1 - 1.5 * IQR
             $
+
         - Upper Bound: values above this are considered outliers.
+
             $
             UB = Q2 + 1.5 * IQR
             $
+            
     - **Replacing Outliers**
         - Any value greater than upper bound is replaced with the upper bound.
         - Any value lowere than lower bound is replaced with the lower bound.
@@ -129,7 +135,7 @@ These libraries can be installed by writing the following code in the terminal: 
 3. **data_preprocessing.py script** is updated with the notebook code.
 ---
 
-##### Step 6: Training the model
+#### Step 6: Training the model
 1. **Loading Dataset:** 
     - X_train, X_test, y_train, y_test datasets are retrived from the previously saved file(**processed_data.pkl**) using **joblib** module.
     - Top 5 features from EDA **(LSTAT, RM, PTRATIO, INDUS, TAX)** and two categorical variable from Data preprocessing **(RAD_4.0 and CHAS)** are selected as top features to train the model.
@@ -159,7 +165,7 @@ These libraries can be installed by writing the following code in the terminal: 
 5. **train_model.py** script file is updated with the notebook code.
 ---
 
-##### Step 7: Evaluating the Model
+#### Step 7: Evaluating the Model
 1. Processed data and best model is loaded from the data and models folder repectively using **joblib**.
 2. Top features and categorical features mentioned in step 6 were selected for testing.
 3. The target variable is predicted using X_test features using **predict()** function of the XGBRegressor method.
@@ -197,24 +203,31 @@ These libraries can be installed by writing the following code in the terminal: 
 10. **evaluate_model.py** script file is updated with the notebook code as a production ready file.
 ---
 
-##### Step 8: Feature Engineering
+#### Step 8: Feature Engineering
 1. Processed data and model is loaded from data and models folder using **joblib** module.
 2. Model and best parameter is extracted from the loaded model.
 3. Train and test features are extracted from the processed data for the selected features.
 4. New features are engineered for **X_train** and **X_test** which are provided below:
     - Rooms per tax
-        $
+
+        $$
         ROOMS PER TAX = RM / (TAX + 1e-6)
-        $
+        $$
+
     - LSTAT and RM interaction
-        $
+
+        $$
         LSTAT RM INTERACTION= LSTAT * RM
-        $
+        $$
+
     - LSTAT squared
-        $
+
+        $$
         LSTAT SQUARED= LSTAT ** 2
-        $
+        $$
+
     - RM binned into categorical ranges.
+
 5. Model is retrained with new engineered features with proper early stopping to prevent overfitting and saves computation time. Target variable prediction is done after training the model and the performance of the model is evaluated using **root mean square error** metrics.
 6. Feature importance analysis with selected features and engineered features is performed where **RM**, **LSTAT** and **TAX** are the top 3 important features observed.
 7. Top features based on feature importance is selected using **SelectFromModel** method from **sklearn.feature_selection** with *median* threshold. The output of the top important features from feature selection are **RM, LSTAT, PTRATIO, TAX, LSTAT_RM_INTERACTION, LSTAT_SQUARED**.

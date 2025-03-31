@@ -102,23 +102,14 @@ These libraries can be installed by writing the following code in the terminal: 
         - $$Q2$$(75th percentile): Median of 2nd half of data
         - **IQR** (InterQuartile Range) represents middle of 50% of data:
 
-            $
-            IQR = Q2 - Q1
-            $
-
+            ***IQR = Q2 - Q1**
     - **Quartile Thresholds:**
         - Lower Bound: Values below this are considered outliers.
 
-            $
-            LB = Q1 - 1.5 * IQR
-            $
-
+            **LB = Q1 - 1.5 * IQR**
         - Upper Bound: values above this are considered outliers.
 
-            $
-            UB = Q2 + 1.5 * IQR
-            $
-            
+            **UB = Q2 + 1.5 * IQR**    
     - **Replacing Outliers**
         - Any value greater than upper bound is replaced with the upper bound.
         - Any value lowere than lower bound is replaced with the lower bound.
@@ -210,18 +201,13 @@ These libraries can be installed by writing the following code in the terminal: 
 4. New features are engineered for **X_train** and **X_test**:
     - Rooms per tax
 
-        $$
-        \mathrm{ROOMS\_PER\_TAX} = \frac{RM}{TAX + 10^{-6}}
-        $$
-        
+        **ROOMS PER TAX = RM / (TAX + 1e-6)**
     - LSTAT and RM interaction
-        $$
-        \text{LSTAT\_RM\_INTERACTION} = LSTAT \times RM
-        $$
+        
+        **LSTAT RM INTERACTION= LSTAT * RM**
     - LSTAT squared
-        $$
-        \text{LSTAT\_SQUARED} = LSTAT^2
-        $$
+
+        **LSTAT SQUARED= LSTAT ** 2**
     - RM binned into categorical ranges.
 
 5. Model is retrained with new engineered features with proper early stopping to prevent overfitting and saves computation time. Target variable prediction is done after training the model and the performance of the model is evaluated using **root mean square error** metrics.

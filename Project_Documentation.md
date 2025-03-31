@@ -98,21 +98,21 @@ These libraries can be installed by writing the following code in the terminal: 
 1. Missing values were handled using **SimpleImputer** from sklearn.impute with **median** strategy.
 2. Outliers are handled using Interquartile Range(IQR rule) which is widely used statical technique for handling outliers.
     - **Quartiles:**
-        - **Q1** (25th percentile): Median of first half of data
-        - **Q2**(75th percentile): Median of 2nd half of data
+        - $$Q1$$ (25th percentile): Median of first half of data
+        - $$Q2$$(75th percentile): Median of 2nd half of data
         - **IQR** (InterQuartile Range) represents middle of 50% of data:
-            $$
+            $
             IQR = Q2 - Q1
-            $$
+            $
     - **Quartile Thresholds:**
         - Lower Bound: Values below this are considered outliers.
-            $$
+            $
             LB = Q1 - 1.5 * IQR
-            $$
+            $
         - Upper Bound: values above this are considered outliers.
-            $$
+            $
             UB = Q2 + 1.5 * IQR
-            $$
+            $
     - **Replacing Outliers**
         - Any value greater than upper bound is replaced with the upper bound.
         - Any value lowere than lower bound is replaced with the lower bound.
@@ -203,17 +203,17 @@ These libraries can be installed by writing the following code in the terminal: 
 3. Train and test features are extracted from the processed data for the selected features.
 4. New features are engineered for **X_train** and **X_test** which are provided below:
     - Rooms per tax
-        $$
+        $
         ROOMS PER TAX = RM / (TAX + 1e-6)
-        $$
+        $
     - LSTAT and RM interaction
-        $$
+        $
         LSTAT RM INTERACTION= LSTAT * RM
-        $$
+        $
     - LSTAT squared
-        $$
+        $
         LSTAT SQUARED= LSTAT ** 2
-        $$
+        $
     - RM binned into categorical ranges.
 5. Model is retrained with new engineered features with proper early stopping to prevent overfitting and saves computation time. Target variable prediction is done after training the model and the performance of the model is evaluated using **root mean square error** metrics.
 6. Feature importance analysis with selected features and engineered features is performed where **RM**, **LSTAT** and **TAX** are the top 3 important features observed.
@@ -255,7 +255,7 @@ This project introduces **supervised learning** (linear regression) to predict B
 - **Feature Engineering**: Improved interpretability and model performance.  
 
 ---
-$$
+$
 THANK YOU
-$$
+$
 ---

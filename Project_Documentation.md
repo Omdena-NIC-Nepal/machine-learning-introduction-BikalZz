@@ -207,23 +207,19 @@ These libraries can be installed by writing the following code in the terminal: 
 1. Processed data and model is loaded from data and models folder using **joblib** module.
 2. Model and best parameter is extracted from the loaded model.
 3. Train and test features are extracted from the processed data for the selected features.
-4. New features are engineered for **X_train** and **X_test** which are provided below:
+4. New features are engineered for **X_train** and **X_test**:
     - Rooms per tax
-
         $$
-        ROOMS_PER_TAX = RM/(TAX + 10^-6) 
+        \text{ROOMS\_PER\_TAX} = \frac{RM}{TAX + 10^{-6}}
         $$
     - LSTAT and RM interaction
         $$
-        LSTAT_RM_INTERACTION= LSTAT*RM
+        \text{LSTAT\_RM\_INTERACTION} = LSTAT \times RM
         $$
-
     - LSTAT squared
-    
         $$
-        LSTAT SQUARED= LSTAT ** 2
+        \text{LSTAT\_SQUARED} = LSTAT^2
         $$
-
     - RM binned into categorical ranges.
 
 5. Model is retrained with new engineered features with proper early stopping to prevent overfitting and saves computation time. Target variable prediction is done after training the model and the performance of the model is evaluated using **root mean square error** metrics.

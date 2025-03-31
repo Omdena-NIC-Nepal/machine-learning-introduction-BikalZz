@@ -98,21 +98,21 @@ These libraries can be installed by writing the following code in the terminal: 
 1. Missing values were handled using **SimpleImputer** from sklearn.impute with **median** strategy.
 2. Outliers are handled using Interquartile Range(IQR rule) which is widely used statical technique for handling outliers.
     - **Quartiles:**
-        - $$Q1$$ (25th percentile): Median of first half of data
-        - $$Q2$$(75th percentile): Median of 2nd half of data
-        - $$IQR$$ (InterQuartile Range) represents middle of 50% of data:
-        $$
-        IQR = Q2 - Q1
-        $$
+        - **Q1** (25th percentile): Median of first half of data
+        - **Q2**(75th percentile): Median of 2nd half of data
+        - **IQR** (InterQuartile Range) represents middle of 50% of data:
+            $$
+            IQR = Q2 - Q1
+            $$
     - **Quartile Thresholds:**
         - Lower Bound: Values below this are considered outliers.
-        $$
-        LB = Q1 - 1.5 * IQR
-        $$
+            $$
+            LB = Q1 - 1.5 * IQR
+            $$
         - Upper Bound: values above this are considered outliers.
-        $$
-        UB = Q2 + 1.5 * IQR
-        $$
+            $$
+            UB = Q2 + 1.5 * IQR
+            $$
     - **Replacing Outliers**
         - Any value greater than upper bound is replaced with the upper bound.
         - Any value lowere than lower bound is replaced with the lower bound.
@@ -148,16 +148,16 @@ These libraries can be installed by writing the following code in the terminal: 
     - **Grid Search Cross Validation**, a hyperparameter tuning technique is used in conjunction with the machine learning algorithms mentioned above for hyperparameter tuning.
         - **GridSearchCV** method from **sklear.model_selecton** is used to split the data into k fold and select the best estimator and parameter from the k fold after training the model.
     - The performance of the Hyperparameter tuning are provided below:
-    | Model                   | RMSE                        | R² Score               | Best_Params                                                  |
-    |:------------------------|:----------------------------|:-----------------------|:-------------------------------------------------------------|
-    | XGBoost                 | 3.032855                    | 0.811994               | '{'gamma': 0, 'learning_rate': 0.1, 'max_depth'...}'         |
-    | RandomForest            | 3.180640                    | 0.793225               | '{'max_depth': 10, 'min_samples_leaf': 2, 'min_...}'         |
-    | Ridge                   | 3.711583                    | 0.718429               | '{'alpha': 10}'                                              |
+        | Model                   | RMSE                        | R² Score               | Best_Params                                                  |
+        |:------------------------|:----------------------------|:-----------------------|:-------------------------------------------------------------|
+        | XGBoost                 | 3.032855                    | 0.811994               | '{'gamma': 0, 'learning_rate': 0.1, 'max_depth'...}'         |
+        | RandomForest            | 3.180640                    | 0.793225               | '{'max_depth': 10, 'min_samples_leaf': 2, 'min_...}'         |
+        | Ridge                   | 3.711583                    | 0.718429               | '{'alpha': 10}'                                              |
 
 4. **Selecting and Saving the model:**
     - From the performance of above we can see that the best performed model is XGBoost which is cost and time effective. Therefore, XGBoost model is selected and saved in **model** folder with filename **best_model.pkl** for future use.
 5. **train_model.py** script file is updated with the notebook code.
-    ---
+---
 
 ##### Step 7: Evaluating the Model
 1. Processed data and best model is loaded from the data and models folder repectively using **joblib**.
@@ -203,17 +203,17 @@ These libraries can be installed by writing the following code in the terminal: 
 3. Train and test features are extracted from the processed data for the selected features.
 4. New features are engineered for **X_train** and **X_test** which are provided below:
     - Rooms per tax
-    $$
-    ROOMS_PER_TAX = RM / (TAX + 1e-6)
-    $$
+        $$
+        ROOMS PER TAX = RM / (TAX + 1e-6)
+        $$
     - LSTAT and RM interaction
-    $$
-    LSTAT_RM_INTERACTION= LSTAT * RM
-    $$
+        $$
+        LSTAT RM INTERACTION= LSTAT * RM
+        $$
     - LSTAT squared
-    $$
-    LSTAT_SQUARED= LSTAT ** 2
-    $$
+        $$
+        LSTAT SQUARED= LSTAT ** 2
+        $$
     - RM binned into categorical ranges.
 5. Model is retrained with new engineered features with proper early stopping to prevent overfitting and saves computation time. Target variable prediction is done after training the model and the performance of the model is evaluated using **root mean square error** metrics.
 6. Feature importance analysis with selected features and engineered features is performed where **RM**, **LSTAT** and **TAX** are the top 3 important features observed.
@@ -255,5 +255,7 @@ This project introduces **supervised learning** (linear regression) to predict B
 - **Feature Engineering**: Improved interpretability and model performance.  
 
 ---
-### THANK YOU
+$$
+THANK YOU
+$$
 ---

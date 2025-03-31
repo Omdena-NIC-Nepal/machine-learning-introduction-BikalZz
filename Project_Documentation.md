@@ -209,9 +209,11 @@ These libraries can be installed by writing the following code in the terminal: 
 3. Train and test features are extracted from the processed data for the selected features.
 4. New features are engineered for **X_train** and **X_test**:
     - Rooms per tax
+
         $$
         \mathrm{ROOMS\_PER\_TAX} = \frac{RM}{TAX + 10^{-6}}
         $$
+        
     - LSTAT and RM interaction
         $$
         \text{LSTAT\_RM\_INTERACTION} = LSTAT \times RM

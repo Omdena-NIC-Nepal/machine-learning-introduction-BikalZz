@@ -102,7 +102,7 @@ These libraries can be installed by writing the following code in the terminal: 
         - $$Q2$$(75th percentile): Median of 2nd half of data
         - **IQR** (InterQuartile Range) represents middle of 50% of data:
 
-            ***IQR = Q2 - Q1**
+            **IQR = Q2 - Q1**
     - **Quartile Thresholds:**
         - Lower Bound: Values below this are considered outliers.
 
@@ -250,7 +250,5 @@ This project introduces **supervised learning** (linear regression) to predict B
 - **Feature Engineering**: Improved interpretability and model performance.  
 
 ---
-$
-THANK YOU
-$
+## THANK YOU
 ---
